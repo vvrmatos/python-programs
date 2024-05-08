@@ -12,8 +12,8 @@
 # License: The unlicensed
 
 
-import pygame
 import sys
+import pygame
 import random
 
 # Initialize Pygame
@@ -27,7 +27,7 @@ pygame.mixer.music.play(-1)
 # Constants
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 PADDLE_WIDTH, PADDLE_HEIGHT = 10, 100
-BALL_SIZE = 15
+BALL_SIZE = 20
 FONT_SIZE = 30
 WHITE = (200, 200, 200)
 GREEN = (144, 238, 144)
@@ -35,6 +35,8 @@ RED = (200, 0, 0)
 
 # Audible
 hit_sound = pygame.mixer.Sound("hit.mp3")
+score_sound = pygame.mixer.Sound("score.mp3")
+score_sound.set_volume(0.3)
 
 # Set up the display
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -49,7 +51,7 @@ right_paddle = pygame.Rect(SCREEN_WIDTH - 20, SCREEN_HEIGHT // 2 - PADDLE_HEIGHT
 # Ball settings
 ball = pygame.Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, BALL_SIZE, BALL_SIZE)
 ball_speed_x, ball_speed_y = 0, 0  # Start with no movement
-initial_speed = 7
+initial_speed = 10
 
 # Scores
 left_score = 0
@@ -122,9 +124,11 @@ while running:
 
     if ball.left <= 0:
         right_score += 1
+        score_sound.play()
         reset_ball()
     elif ball.right >= SCREEN_WIDTH:
         left_score += 1
+        score_sound.play()
         reset_ball()
 
     screen.fill((0, 0, 0))
