@@ -31,16 +31,16 @@ BALL_SIZE = 20
 FONT_SIZE = 30
 WHITE = (200, 200, 200)
 GREEN = (144, 238, 144)
-RED = (200, 0, 0)
+RED = (250, 45, 40)
 
 # Audible
-hit_sound = pygame.mixer.Sound("hit.mp3")
-score_sound = pygame.mixer.Sound("score.mp3")
+hit_sound = pygame.mixer.Sound('hit.mp3')
+score_sound = pygame.mixer.Sound('score.mp3')
 score_sound.set_volume(0.3)
 
 # Set up the display
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Pong")
+pygame.display.set_caption('Pong')
 font = pygame.font.Font(None, FONT_SIZE)
 
 # Paddle settings
@@ -76,9 +76,9 @@ def display_intro():
                     intro = False
         
         screen.fill((0, 0, 0))
-        title_text = title_font.render("Welcome to Pong!", True, WHITE)
-        instruction_text = font.render("Press Space to start", True, WHITE)
-        author_text = font.render("by Victor Kolis", True, RED)
+        title_text = title_font.render('Welcome to Pong!', True, WHITE)
+        instruction_text = font.render('Press Space to start', True, WHITE)
+        author_text = font.render('by Victor Kolis', True, RED)
         screen.blit(title_text, (SCREEN_WIDTH // 2 - title_text.get_width() // 2, 100))
         screen.blit(instruction_text, (SCREEN_WIDTH // 2 - instruction_text.get_width() // 2, 200))
         screen.blit(author_text, (SCREEN_WIDTH // 2 - instruction_text.get_width() // 3, 250))
